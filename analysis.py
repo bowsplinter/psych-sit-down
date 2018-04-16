@@ -33,8 +33,8 @@ def descriptive_stats():
     bars2 = [control_group_time_median, experiment_group_time_median]
     r1 = np.arange(len(bars1))
     r2 = [x + bar_width for x in r1]
-    plt.bar(r1, bars1, width = bar_width, color = 'blue', edgecolor = 'black', capsize=7, label='mean')
-    plt.bar(r2, bars2, width = bar_width, color = 'cyan', edgecolor = 'black', capsize=7, label='median')
+    plt.bar(r1, bars1, width = bar_width, color = '#F15854', edgecolor = 'black', capsize=7, label='mean')
+    plt.bar(r2, bars2, width = bar_width, color = '#FAA43A', edgecolor = 'black', capsize=7, label='median')
     plt.xticks([r + bar_width for r in range(len(bars1))], ['Control Group', 'Experiment'])
     plt.ylabel('Time taken (s)')
     plt.legend()
@@ -45,8 +45,8 @@ def descriptive_stats():
     bars2 = [control_group_score_median, experiment_group_score_median]
     r1 = np.arange(len(bars1))
     r2 = [x + bar_width for x in r1]
-    plt.bar(r1, bars1, width = bar_width, color = 'blue', edgecolor = 'black', capsize=7, label='mean')
-    plt.bar(r2, bars2, width = bar_width, color = 'cyan', edgecolor = 'black', capsize=7, label='median')
+    plt.bar(r1, bars1, width = bar_width, color = '#F15854', edgecolor = 'black', capsize=7, label='mean')
+    plt.bar(r2, bars2, width = bar_width, color = '#FAA43A', edgecolor = 'black', capsize=7, label='median')
     plt.xticks([r + bar_width for r in range(len(bars1))], ['Control Group', 'Experiment'])
     plt.ylabel('Score achieved (out of 5)')
     plt.legend()
