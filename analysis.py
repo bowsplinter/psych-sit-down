@@ -57,21 +57,48 @@ def descriptive_stats():
 def check_normal_distribution():
     # Check data is normally distributed
     plt.figure(2)
-
     plt.subplot(221)
+    plt.tick_params(
+        axis='both',         # changes apply to both axis
+        which='both',       # both major and minor ticks are affected
+        bottom='off',       # ticks along the bottom edge are off
+        left='off',         # ticks along the left edge are off
+        labelleft='off',    # labels along the left edge are off
+        labelbottom='off')  # labels along the bottom edge are off
     plt.title("Control Group Times")
     sns.distplot(control_group_time)
     plt.subplot(222)
+    plt.tick_params(
+        axis='both',         # changes apply to both axis
+        which='both',       # both major and minor ticks are affected
+        bottom='off',       # ticks along the bottom edge are off
+        left='off',         # ticks along the left edge are off
+        labelleft='off',    # labels along the left edge are off
+        labelbottom='off')  # labels along the bottom edge are off
     plt.title("Control Group Scores")
-    sns.distplot(control_group_score)
+    sns.distplot(control_group_score, bins=5)
     plt.subplot(223)
+    plt.tick_params(
+        axis='both',         # changes apply to both axis
+        which='both',       # both major and minor ticks are affected
+        bottom='off',       # ticks along the bottom edge are off
+        left='off',         # ticks along the left edge are off
+        labelleft='off',    # labels along the left edge are off
+        labelbottom='off')  # labels along the bottom edge are off
     plt.title("Experiment Group Times")
     sns.distplot(experiment_group_time)
     plt.subplot(224)
+    plt.tick_params(
+        axis='both',         # changes apply to both axis
+        which='both',       # both major and minor ticks are affected
+        bottom='off',       # ticks along the bottom edge are off
+        left='off',         # ticks along the left edge are off
+        labelleft='off',    # labels along the left edge are off
+        labelbottom='off')  # labels along the bottom edge are off
     plt.title("Experiment Group Scores")
-    sns.distplot(experiment_group_score)
-
+    sns.distplot(experiment_group_score, bins=5)
     plt.subplots_adjust(hspace=0.35)
+
     plt.show()
 
 if __name__ == '__main__':
