@@ -117,7 +117,10 @@ def anderson_darling_test(x):
     a_squared = - num_x - a_squared_temp
     a_squared *= (1 + 4.0/num_x + 25.0/math.pow(num_x,2))
 
-def t_test_two_tailed(a, b, confidence=0.05):
+def t_test(a, b, confidence=0.01, two_tailed=True):
+    test_confidence = confidence
+    if two_tailed:
+        test_confidence /= 2
     stdev_a = statistics.stdev(a)
     stdev_b = statistics.stdev(b)
     num_a = len(a)
@@ -129,7 +132,7 @@ def t_test_two_tailed(a, b, confidence=0.05):
     pooled_estimate = math.sqrt(pooled_estimate)
     SE_mean = pooled_estimate * math.sqrt(1/float(num_a) + 1/float(num_b))
     t = (mean_a - mean_b)/SE_mean
-    t_critical = stats.t.ppf(1-confidence/2, degree_of_freedom)
+    t_critical = stats.t.ppf(1-test_confidence, degree_of_freedom)
     print("t: {}".format(t))
     print("t_critical: {}".format(t_critical))
     if (t > t_critical):
@@ -137,7 +140,8 @@ def t_test_two_tailed(a, b, confidence=0.05):
     else:
         print("Since the t value is not higher than t_critical, we are unable to reject the null hypothesis at a {:d}% confidence level".format(int((1-confidence)*100)))
 
-
-
 if __name__ == '__main__':
+    descriptive_stats()
     check_normal_distribution()
+    t_test(control_group_time,experiment_group_time, two_tailed=False)
+    t_test(control_group_score,experiment_group_score, two_tailed=False)
