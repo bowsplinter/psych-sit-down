@@ -9,7 +9,7 @@ import statistics
 import seaborn as sns
 import numpy as np
 import matplotlib.pyplot as plt
-from scipy.stats import norm
+import scipy.stats as stats
 
 def descriptive_stats():
     # mean
@@ -100,6 +100,23 @@ def check_normal_distribution():
     plt.subplots_adjust(hspace=0.35)
 
     plt.show()
+
+def anderson_darling_test(x):
+    # https://en.wikipedia.org/wiki/Anderson–Darling_test
+    x = np.array(x, dtype='float')
+    mean = statistics.mean(x)
+    variance = statistics.variance(x)
+    normal_x = (x-mean)/math.sqrt(variance)
+    normal_cdf_x = [stats.norm.cdf(i) for i in normal_x]
+    a_squared_temp = 0
+    num_x = len(x)
+    for i, phi in enumerate(normal_cdf_x):
+        i = i+1
+        a_squared_temp += (2*i - 1)*np.log(phi) + (2*(num_x-i) + 1)*np.log(1-phi)
+    a_squared_temp /= num_x
+    a_squared = - num_x - a_squared_temp
+    a_squared *= (1 + 4.0/num_x + 25.0/math.pow(num_x,2))
+
 
 if __name__ == '__main__':
     check_normal_distribution()
