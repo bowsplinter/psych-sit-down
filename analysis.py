@@ -52,7 +52,7 @@ def descriptive_stats():
     plt.legend()
 
     plt.subplots_adjust(wspace=0.35)
-    plt.show()
+    plt.savefig('dstats.png', bbox_inches='tight')
 
 def check_normal_distribution():
     # Check data is normally distributed
@@ -99,7 +99,7 @@ def check_normal_distribution():
     sns.distplot(experiment_group_score, bins=5)
     plt.subplots_adjust(hspace=0.35)
 
-    plt.show()
+    plt.savefig('normal_dists.png', bbox_inches='tight')
 
 def anderson_darling_test(x):
     # https://en.wikipedia.org/wiki/Anderson–Darling_test
