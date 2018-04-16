@@ -1,5 +1,7 @@
 control_group_time = [1148,1084,1480,1474,1462,1455,1435,1385,1380,1363]
+control_group_time += [1280, 1250, 1370, 1440, 1320]
 control_group_score = [3,4,1,1,0,5,2,1,2,2]
+control_group_score += [2, 1, 1, 2, 2]
 
 experiment_group_time = [600,790,1020,713,770,1279,668,932,1102,806,735]
 experiment_group_score = [1,4,0,2,2,2,1,1,1,0,2]
@@ -35,7 +37,7 @@ def descriptive_stats():
     r2 = [x + bar_width for x in r1]
     plt.bar(r1, bars1, width = bar_width, color = '#F15854', edgecolor = 'black', capsize=7, label='mean')
     plt.bar(r2, bars2, width = bar_width, color = '#FAA43A', edgecolor = 'black', capsize=7, label='median')
-    plt.xticks([r + bar_width for r in range(len(bars1))], ['Control Group', 'Experiment'])
+    plt.xticks([r + bar_width for r in range(len(bars1))], ['Control Group', 'Test Group'])
     plt.ylabel('Time taken (s)')
     plt.legend()
 
@@ -47,7 +49,7 @@ def descriptive_stats():
     r2 = [x + bar_width for x in r1]
     plt.bar(r1, bars1, width = bar_width, color = '#F15854', edgecolor = 'black', capsize=7, label='mean')
     plt.bar(r2, bars2, width = bar_width, color = '#FAA43A', edgecolor = 'black', capsize=7, label='median')
-    plt.xticks([r + bar_width for r in range(len(bars1))], ['Control Group', 'Experiment'])
+    plt.xticks([r + bar_width for r in range(len(bars1))], ['Control Group', 'Test Group'])
     plt.ylabel('Score achieved (out of 5)')
     plt.legend()
 
@@ -85,7 +87,7 @@ def check_normal_distribution():
         left=False,         # ticks along the left edge are off
         labelleft=False,    # labels along the left edge are off
         labelbottom=False)  # labels along the bottom edge are off
-    plt.title("Experiment Group Times")
+    plt.title("Test Group Times")
     sns.distplot(experiment_group_time)
     plt.subplot(224)
     plt.tick_params(
@@ -95,7 +97,7 @@ def check_normal_distribution():
         left=False,         # ticks along the left edge are off
         labelleft=False,    # labels along the left edge are off
         labelbottom=False)  # labels along the bottom edge are off
-    plt.title("Experiment Group Scores")
+    plt.title("Test Group Scores")
     sns.distplot(experiment_group_score, bins=5)
     plt.subplots_adjust(hspace=0.35)
 
