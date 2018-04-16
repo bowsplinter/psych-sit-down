@@ -117,6 +117,27 @@ def anderson_darling_test(x):
     a_squared = - num_x - a_squared_temp
     a_squared *= (1 + 4.0/num_x + 25.0/math.pow(num_x,2))
 
+def t_test_two_tailed(a, b, confidence=0.05):
+    stdev_a = statistics.stdev(a)
+    stdev_b = statistics.stdev(b)
+    num_a = len(a)
+    num_b = len(b)
+    mean_a = statistics.mean(a)
+    mean_b = statistics.mean(b)
+    degree_of_freedom = num_a + num_b - 2
+    pooled_estimate = ((num_a - 1)*stdev_a**2 + (num_b - 1)*stdev_b**2) / float(degree_of_freedom)
+    pooled_estimate = math.sqrt(pooled_estimate)
+    SE_mean = pooled_estimate * math.sqrt(1/float(num_a) + 1/float(num_b))
+    t = (mean_a - mean_b)/SE_mean
+    t_critical = stats.t.ppf(1-confidence/2, degree_of_freedom)
+    print("t: {}".format(t))
+    print("t_critical: {}".format(t_critical))
+    if (t > t_critical):
+        print("Since the t value is higher than t_critical, we reject the null hypothesis at a {}% confidence level".format((1-confidence)*100))
+    else:
+        print("Since the t value is not higher than t_critical, we are unable to reject the null hypothesis at a {:d}% confidence level".format(int((1-confidence)*100)))
+
+
 
 if __name__ == '__main__':
     check_normal_distribution()
