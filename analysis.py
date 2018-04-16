@@ -54,5 +54,25 @@ def descriptive_stats():
     plt.subplots_adjust(wspace=0.35)
     plt.show()
 
+def check_normal_distribution():
+    # Check data is normally distributed
+    plt.figure(2)
+
+    plt.subplot(221)
+    plt.title("Control Group Times")
+    sns.distplot(control_group_time)
+    plt.subplot(222)
+    plt.title("Control Group Scores")
+    sns.distplot(control_group_score)
+    plt.subplot(223)
+    plt.title("Experiment Group Times")
+    sns.distplot(experiment_group_time)
+    plt.subplot(224)
+    plt.title("Experiment Group Scores")
+    sns.distplot(experiment_group_score)
+
+    plt.subplots_adjust(hspace=0.35)
+    plt.show()
+
 if __name__ == '__main__':
-    descriptive_stats()
+    check_normal_distribution()
